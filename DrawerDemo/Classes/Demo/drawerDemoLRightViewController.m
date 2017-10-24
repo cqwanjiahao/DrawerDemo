@@ -14,14 +14,14 @@
 
 @implementation drawerDemoLRightViewController
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    UILabel *lable = [[UILabel alloc] init];
-    lable.text = @"右菜单栏";
-    lable.font = [UIFont systemFontOfSize:20];
-    lable.textColor = [UIColor blackColor];
-    lable.frame = CGRectMake(100, 300, 100, 30);
-    [self.view addSubview:lable];
-    
+  [super viewDidLoad];
+  self.view.backgroundColor = [UIColor whiteColor];
+  UILabel *lable = [[UILabel alloc] init];
+  lable.text = @"右菜单栏";
+  lable.font = [UIFont systemFontOfSize:20];
+  lable.textColor = [UIColor blackColor];
+  lable.frame = CGRectMake(100, 300, 100, 30);
+  [self.view addSubview:lable];
+  
 }
 @end

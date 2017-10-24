@@ -9,14 +9,14 @@
 #import "drawerDemoLeftViewController.h"
 @implementation drawerDemoLeftViewController
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    UILabel *lable = [[UILabel alloc] init];
-    lable.text = @"左菜单栏";
-    lable.font = [UIFont systemFontOfSize:20];
-    lable.textColor = [UIColor redColor];
-    lable.frame = CGRectMake(30, 300, 100, 30);
-    [self.view addSubview:lable];
-    
+  [super viewDidLoad];
+  self.view.backgroundColor = [UIColor whiteColor];
+  UILabel *lable = [[UILabel alloc] init];
+  lable.text = @"左菜单栏";
+  lable.font = [UIFont systemFontOfSize:20];
+  lable.textColor = [UIColor redColor];
+  lable.frame = CGRectMake(30, 300, 100, 30);
+  [self.view addSubview:lable];
+  
 }
 @end
