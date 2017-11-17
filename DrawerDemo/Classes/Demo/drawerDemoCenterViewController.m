@@ -43,13 +43,11 @@
   self.contentScrollView.bounces = NO;
   self.contentScrollView.pagingEnabled = YES;
   self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width * 3,0);
-  
 }
 
 - (void)setupNavgation {
   //1.设置导航栏颜色
   self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:176/255.0 alpha:1.0];
-  
   //2.设置左右导航栏按钮
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"左抽屉" style:UIBarButtonItemStylePlain target:self action:@selector(didTapLeftBarButton)];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"右抽屉" style:UIBarButtonItemStylePlain target:self action:@selector(didTapRightBarButton)];
@@ -58,6 +56,7 @@
 - (void)didTapLeftBarButton {
   [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
 - (void)didTapRightBarButton {
   [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
@@ -65,29 +64,29 @@
 //解决scrollview与抽屉控制器冲突
 - (void)dealConflict {
   /*方法1. 使用UIScrollViewDelegate  :  - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {}
-  */
+   */
   
-      self.contentScrollView.delegate = self;  //成为代理,准守协议,执行方法
+  self.contentScrollView.delegate = self;  //成为代理,遵守协议,执行方法
   
   /*方法2. 使用UIGestureRecognizerDelegate   - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {}
-  */
+   */
   
-//  UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:nil];//创建一个空手势
-//  [self.contentScrollView addGestureRecognizer:pan];//添加空手势
-//  pan.delegate = self; //成为代理,准守协议,执行代理方法
+  //  UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:nil];//创建一个空手势
+  //  [self.contentScrollView addGestureRecognizer:pan];//添加空手势
+  //  pan.delegate = self; //成为代理,遵守协议,执行代理方法
 }
 
 ///Way 1:执行scrollView代理方法
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    //获取滑动偏移量
-    float tagetX = targetContentOffset->x;
-    //向左滑动时： 如果滑动后的X为最小（最小的X值），并且 为第一个控制器(contentOffsetX 为最小0)
-    //向右滑动时： 如果滑动后的X为最大（最大的X值），并且为最后一个控制器（contentOffsetX 为最大）
-    if (tagetX == 0 && self.contentScrollView.contentOffset.x == 0 * SCREEN_WIDTH) {
-        [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    } else if (tagetX == 2 * SCREEN_WIDTH  && self.contentScrollView.contentOffset.x == 2 * SCREEN_WIDTH) {
-        [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
-    }
+  //获取滑动偏移量
+  float tagetX = targetContentOffset->x;
+  //向左滑动时： 如果滑动后的X为最小（最小的X值），并且 为第一个控制器(contentOffsetX 为最小0)
+  //向右滑动时： 如果滑动后的X为最大（最大的X值），并且为最后一个控制器（contentOffsetX 为最大）
+  if (tagetX == 0 && self.contentScrollView.contentOffset.x == 0 * SCREEN_WIDTH) {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+  } else if (tagetX == 2 * SCREEN_WIDTH  && self.contentScrollView.contentOffset.x == 2 * SCREEN_WIDTH) {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+  }
 }
 
 ////Way 2:执行手势代理方法

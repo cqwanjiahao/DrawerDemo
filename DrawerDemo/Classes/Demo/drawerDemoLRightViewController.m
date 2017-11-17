@@ -22,6 +22,5 @@
   lable.textColor = [UIColor blackColor];
   lable.frame = CGRectMake(100, 300, 100, 30);
   [self.view addSubview:lable];
-  
 }
 @end
