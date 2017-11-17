@@ -14,6 +14,7 @@
 @interface drawerDemoCenterViewController ()<UIScrollViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 @end
+
 @implementation drawerDemoCenterViewController
 
 - (void)viewDidLoad {
@@ -80,8 +81,8 @@
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
   //获取滑动偏移量
   float tagetX = targetContentOffset->x;
-  //向左滑动时： 如果滑动后的X为最小（最小的X值），并且 为第一个控制器(contentOffsetX 为最小0)
-  //向右滑动时： 如果滑动后的X为最大（最大的X值），并且为最后一个控制器（contentOffsetX 为最大）
+  //向左滑动时： 如果滑动后的X为最小（最小的X值），并且为第一个控制器(contentOffsetX 为最小0)
+  //向右滑动时： 如果滑动后的X为最大（最大的X值），并且为最后一个控制器(contentOffsetX 为最大）
   if (tagetX == 0 && self.contentScrollView.contentOffset.x == 0 * SCREEN_WIDTH) {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
   } else if (tagetX == 2 * SCREEN_WIDTH  && self.contentScrollView.contentOffset.x == 2 * SCREEN_WIDTH) {
